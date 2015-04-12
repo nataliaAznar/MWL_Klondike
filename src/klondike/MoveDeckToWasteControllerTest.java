@@ -34,5 +34,14 @@ private StartGameController startGameController;
 		assertEquals(startGameController.sizeDeck(), 0);
 		assertEquals(startGameController.sizeWaste(), (sizeWaste + sizeDeck));
 	}
-
+	
+	@Test
+	public void moveDeckSizeZeroTest() {
+		startGameController.setSizeDeck(0);
+		int sizeWaste = startGameController.sizeWaste();
+		moveDeckToWasteController.move();
+		assertEquals(startGameController.sizeDeck(), 0);
+		assertEquals(startGameController.sizeWaste(), sizeWaste);
+	}
+	
 }
