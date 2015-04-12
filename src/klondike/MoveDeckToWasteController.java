@@ -9,14 +9,15 @@ public class MoveDeckToWasteController {
 
 	public void move() {
 		int sizeDeck = startGameController.sizeDeck();
-		int sizeWaste = startGameController.sizeWaste();
 		if( sizeDeck >= 3){
 			startGameController.setSizeDeck(sizeDeck - 3);
-			startGameController.setSizeWaste(sizeWaste + 3);
+			for( int i = 0; i < 3; i++)
+				startGameController.wasteAddCard(new Card(1, Suit.CLUBS));
 		}
 		else if( sizeDeck > 0){
 			startGameController.setSizeDeck(0);
-			startGameController.setSizeWaste(sizeWaste + sizeDeck);
+			for( int i = 0; i < sizeDeck ; i++)
+				startGameController.wasteAddCard(new Card(1, Suit.CLUBS));
 		}
 		
 	}
