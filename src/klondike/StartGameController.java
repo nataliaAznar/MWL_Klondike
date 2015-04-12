@@ -8,14 +8,12 @@ public class StartGameController {
 	private static final int FOUNDATIONS = 4;
 	
 	private int sizeDeck;
-	private int sizeWaste;
 	
 	private ArrayList<Stack<Card>> foundations;
 	private Stack<Card> waste;
 	
 	public StartGameController(){
 		sizeDeck = 24;
-		sizeWaste = 0;
 		foundations = new ArrayList<Stack<Card>>(4);
 		for(int i = 0; i < FOUNDATIONS; i++){
 			foundations.add(new Stack<Card>());
@@ -59,11 +57,6 @@ public class StartGameController {
 
 	public void setSizeDeck(int sizeDeck) {
 		this.sizeDeck = sizeDeck;
-		
-	}
-
-	public void setSizeWaste(int sizeWaste) {
-		this.sizeWaste = sizeWaste;
 		
 	}
 
