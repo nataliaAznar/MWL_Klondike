@@ -1,10 +1,18 @@
 package klondike;
 
 public class Card {
+	private int number;
+	
+	public Card(int number){
+		this.number = number;
+	}
 
 	public boolean uncovered() {
-		// TODO Auto-generated method stub
 		return true;
+	}
+
+	public int getNumber() {
+		return number;
 	}
 
 }

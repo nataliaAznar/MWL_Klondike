@@ -5,6 +5,7 @@ import java.util.Stack;
 
 public class StartGameController {
 	private static final int TABLEAUS = 7;
+	private static final int FOUNDATIONS = 4;
 	
 	private int sizeDeck;
 	private int sizeWaste;
@@ -20,7 +21,7 @@ public class StartGameController {
 
 	public ArrayList<Integer> sizeFoundations() {
 		ArrayList<Integer> sizeFoundations = new ArrayList<Integer>();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < FOUNDATIONS; i++) {
 			sizeFoundations.add(0);
 		}
 		return sizeFoundations;
@@ -42,7 +43,7 @@ public class StartGameController {
 		ArrayList<Stack<Card>> uncoveredCardsStackTableaus = new ArrayList<Stack<Card>>();
 		for (int i = 0; i < TABLEAUS; i++) {
 			Stack<Card> uncoveredCardsStack = new Stack<Card>();
-			uncoveredCardsStack.add(new Card());
+			uncoveredCardsStack.add(new Card(0));
 			uncoveredCardsStackTableaus.add(uncoveredCardsStack);
 		}
 		return uncoveredCardsStackTableaus;
@@ -56,6 +57,10 @@ public class StartGameController {
 	public void setSizeWaste(int sizeWaste) {
 		this.sizeWaste = sizeWaste;
 		
+	}
+
+	public Card wasteCard() {
+		return new Card(1);
 	}
 
 }
