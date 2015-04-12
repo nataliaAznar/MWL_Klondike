@@ -23,12 +23,8 @@ public class MoveWasteToFoundationControllerTest {
 	@Test
 	public void moveFoundationSizeZeroTest(){
 		startGameController.wasteAddCard(new Card(1, Suit.CLUBS));
-		Card card = startGameController.wasteCard();
 		boolean move = moveWasteToFoundationController.move(FOUNDATION);
-		if((card.getNumber() == 1) )
-			assertTrue(move);
-		else
-			assertFalse(move);
+		assertTrue(move);
 	}
 	
 	@Test
@@ -41,6 +37,18 @@ public class MoveWasteToFoundationControllerTest {
 		assertTrue(moveWasteToFoundationController.move(FOUNDATION));
 		assertEquals(sizeWaste-1, startGameController.sizeWaste());
 		assertEquals(foundationSize+1, startGameController.getFoundation(FOUNDATION).size());
+	}
+	
+	@Test
+	public void moveBadTest(){
+		startGameController.wasteAddCard(new Card(1, Suit.CLUBS));
+		startGameController.foundationAddCard(FOUNDATION, new Card(1, Suit.CLUBS));
+		Stack<Card> foundation = startGameController.getFoundation(FOUNDATION);
+		int foundationSize = foundation.size();
+		int sizeWaste = startGameController.sizeWaste();
+		assertFalse(moveWasteToFoundationController.move(FOUNDATION));
+		assertEquals(sizeWaste, startGameController.sizeWaste());
+		assertEquals(foundationSize, startGameController.getFoundation(FOUNDATION).size());
 	}
 
 }
