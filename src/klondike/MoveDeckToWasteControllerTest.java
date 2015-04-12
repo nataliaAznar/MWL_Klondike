@@ -21,10 +21,18 @@ private StartGameController startGameController;
 		int sizeDeck = startGameController.sizeDeck();
 		int sizeWaste = startGameController.sizeWaste();
 		moveDeckToWasteController.move();
-		if(sizeDeck >= 3){
-			assertEquals(startGameController.sizeDeck(), (sizeDeck - 3));
-			assertEquals(startGameController.sizeWaste(), (sizeWaste + 3));
-		}
+		assertEquals(startGameController.sizeDeck(), (sizeDeck - 3));
+		assertEquals(startGameController.sizeWaste(), (sizeWaste + 3));
+	}
+	
+	@Test
+	public void moveDeckSizeLessThanThreeTest() {
+		startGameController.setSizeDeck(2);
+		int sizeDeck = startGameController.sizeDeck();
+		int sizeWaste = startGameController.sizeWaste();
+		moveDeckToWasteController.move();
+		assertEquals(startGameController.sizeDeck(), 0);
+		assertEquals(startGameController.sizeWaste(), (sizeWaste + sizeDeck));
 	}
 
 }
