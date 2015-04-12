@@ -5,10 +5,17 @@ import java.util.Stack;
 
 public class StartGameController {
 	private static final int TABLEAUS = 7;
+	
+	private int sizeDeck;
+	private int sizeWaste;
+	
+	public StartGameController(){
+		sizeDeck = 24;
+		sizeWaste = 0;
+	}
 
 	public int sizeWaste() {
-		// TODO Auto-generated method stub
-		return 0;
+		return sizeWaste;
 	}
 
 	public ArrayList<Integer> sizeFoundations() {
@@ -20,7 +27,7 @@ public class StartGameController {
 	}
 
 	public int sizeDeck() {
-		return 24;
+		return sizeDeck;
 	}
 
 	public ArrayList<Integer> sizeCoveredCardsTableaus() {
@@ -39,6 +46,16 @@ public class StartGameController {
 			uncoveredCardsStackTableaus.add(uncoveredCardsStack);
 		}
 		return uncoveredCardsStackTableaus;
+	}
+
+	public void setSizeDeck(int sizeDeck) {
+		this.sizeDeck = sizeDeck;
+		
+	}
+
+	public void setSizeWaste(int sizeWaste) {
+		this.sizeWaste = sizeWaste;
+		
 	}
 
 }
