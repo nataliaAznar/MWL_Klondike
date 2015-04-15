@@ -10,13 +10,18 @@ public class StartGameController {
 	private int sizeDeck;
 	
 	private ArrayList<Stack<Card>> foundations;
+	private ArrayList<Stack<Card>> tableaus;
 	private Stack<Card> waste;
 	
 	public StartGameController(){
 		sizeDeck = 24;
-		foundations = new ArrayList<Stack<Card>>(4);
+		foundations = new ArrayList<Stack<Card>>(FOUNDATIONS);
+		tableaus = new ArrayList<Stack<Card>>(TABLEAUS);
 		for(int i = 0; i < FOUNDATIONS; i++){
 			foundations.add(new Stack<Card>());
+		}
+		for(int i = 0; i < TABLEAUS; i++){
+			tableaus.add(new Stack<Card>());
 		}
 		waste= new Stack<Card>();
 	}
@@ -78,6 +83,15 @@ public class StartGameController {
 
 	public void wasteAddCard(Card card) {
 		waste.add(card);		
+	}
+
+	public Stack<Card> getTableau(int tableau) {
+		return tableaus.get(tableau);
+	}
+
+	public void tableauAddCard(int tableau, Card card) {
+		tableaus.get(tableau).add(card);
+		
 	}
 
 }

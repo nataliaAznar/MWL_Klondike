@@ -9,23 +9,23 @@ public class MoveWasteToTableauController {
 		this.startGameController = startGameController;
 	}
 
-	public boolean move(int foundationNumber) {
-		Stack<Card> foundation = startGameController.getFoundation(foundationNumber);
+	public boolean move(int tableauNumber) {
+		Stack<Card> tableau = startGameController.getTableau(tableauNumber);
 		Card moveCard = startGameController.wasteCard();
-		if( (foundation.size() == 0) && (moveCard.getNumber() == 12)){
-			return moveCard(foundationNumber, moveCard);
+		if( (tableau.size() == 0) && (moveCard.getNumber() == 12)){
+			return moveCard(tableauNumber, moveCard);
 		}
-		else if(foundation.size() > 0){
-			Card lastCard = foundation.peek();
+		else if(tableau.size() > 0){
+			Card lastCard = tableau.peek();
 			if((lastCard.getNumber()==(moveCard.getNumber()+1))&&(lastCard.getColor()!=moveCard.getColor())){
-				return moveCard(foundationNumber, moveCard);
+				return moveCard(tableauNumber, moveCard);
 			}
 		}
 		return false;
 	}
 	
-	public boolean moveCard(int foundation, Card card){
-		startGameController.foundationAddCard(foundation, card);
+	public boolean moveCard(int tableau, Card card){
+		startGameController.tableauAddCard(tableau, card);
 		startGameController.wasteRemoveCard();
 		return true;
 	}
