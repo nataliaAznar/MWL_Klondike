@@ -7,12 +7,12 @@ import org.junit.Test;
 
 public class MoveWasteToTableauControllerTest {
 	private MoveWasteToTableauController moveWasteToTableauController;
-	private StartGameController startGameController;
+	private GameController startGameController;
 	private static final int TABLEAU = 1;
 
 	@Before
 	public void before(){
-		startGameController = new StartGameController();
+		startGameController = new GameController();
 		moveWasteToTableauController = new MoveWasteToTableauController(startGameController);
 	}
 	

@@ -11,12 +11,12 @@ import org.junit.Test;
 
 public class MoveWasteToFoundationControllerTest {
 	private MoveWasteToFoundationController moveWasteToFoundationController;
-	private StartGameController startGameController;
+	private GameController startGameController;
 	private static final int FOUNDATION = 1;
 	
 	@Before
 	public void before(){
-		startGameController = new StartGameController();
+		startGameController = new GameController();
 		moveWasteToFoundationController = new MoveWasteToFoundationController(startGameController);
 	}
 	

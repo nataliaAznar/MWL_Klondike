@@ -8,13 +8,14 @@ import java.util.Stack;
 import org.junit.Before;
 import org.junit.Test;
 
-public class StartGameControllerTest {
+public class GameControllerTest {
+	private static final int FOUNDATIONS = 4;
 
-	private StartGameController startGameController;
+	private GameController startGameController;
 	
 	@Before
 	public void before(){
-		startGameController = new StartGameController();
+		startGameController = new GameController();
 	}
 	@Test
 	public void sizeWastetest() {
@@ -23,10 +24,8 @@ public class StartGameControllerTest {
 
 	@Test
 	public void sizeFoundationsTest() {
-		ArrayList<Integer> sizeFoundations = startGameController.sizeFoundations();
-		assertEquals(4, sizeFoundations.size());
-		for(int sizeFoundation: sizeFoundations){
-			assertEquals(0, sizeFoundation);
+		for(int i = 0; i < FOUNDATIONS; i++){
+			assertEquals(0, startGameController.getFoundation(i).size());
 		}
 	}
 	

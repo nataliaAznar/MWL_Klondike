@@ -3,9 +3,9 @@ package klondike;
 import java.util.Stack;
 
 public class MoveWasteToTableauController {
-	private StartGameController startGameController;
+	private GameController startGameController;
 
-	public MoveWasteToTableauController(StartGameController startGameController) {
+	public MoveWasteToTableauController(GameController startGameController) {
 		this.startGameController = startGameController;
 	}
 

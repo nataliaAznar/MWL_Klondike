@@ -3,10 +3,10 @@ package klondike;
 import java.util.Stack;
 
 public class MoveWasteToFoundationController {
-	private StartGameController startGameController;
+	private GameController startGameController;
 
 	public MoveWasteToFoundationController(
-			StartGameController startGameController) {
+			GameController startGameController) {
 		this.startGameController = startGameController;
 	}
 

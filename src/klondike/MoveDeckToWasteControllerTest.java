@@ -8,11 +8,11 @@ import org.junit.Test;
 public class MoveDeckToWasteControllerTest {
 	
 private MoveDeckToWasteController moveDeckToWasteController;
-private StartGameController startGameController;
+private GameController startGameController;
 	
 	@Before
 	public void before(){
-		startGameController = new StartGameController();
+		startGameController = new GameController();
 		moveDeckToWasteController = new MoveDeckToWasteController(startGameController);
 	}
 

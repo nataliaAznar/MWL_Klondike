@@ -3,7 +3,7 @@ package klondike;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class StartGameController {
+public class GameController {
 	private static final int TABLEAUS = 7;
 	private static final int FOUNDATIONS = 4;
 	
@@ -13,7 +13,7 @@ public class StartGameController {
 	private ArrayList<Stack<Card>> tableaus;
 	private Stack<Card> waste;
 	
-	public StartGameController(){
+	public GameController(){
 		sizeDeck = 24;
 		foundations = new ArrayList<Stack<Card>>(FOUNDATIONS);
 		tableaus = new ArrayList<Stack<Card>>(TABLEAUS);
@@ -28,14 +28,6 @@ public class StartGameController {
 
 	public int sizeWaste() {
 		return waste.size();
-	}
-
-	public ArrayList<Integer> sizeFoundations() {
-		ArrayList<Integer> sizeFoundations = new ArrayList<Integer>();
-		for (int i = 0; i < FOUNDATIONS; i++) {
-			sizeFoundations.add(0);
-		}
-		return sizeFoundations;
 	}
 
 	public int sizeDeck() {

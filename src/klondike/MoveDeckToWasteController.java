@@ -1,9 +1,9 @@
 package klondike;
 
 public class MoveDeckToWasteController {
-	private StartGameController startGameController;
+	private GameController startGameController;
 
-	public MoveDeckToWasteController(StartGameController startGameController) {
+	public MoveDeckToWasteController(GameController startGameController) {
 		this.startGameController = startGameController;
 	}
 
