@@ -66,9 +66,12 @@ private GameController gameController;
 			moveDeckToWasteController = new MoveDeckToWasteController(gameController);
 			moveDeckToWasteController.move();
 			Card card = gameController.getDeckCard();
-			Integer repetitions = cont.get(card.getSuit()).get(card.getNumber()-1);
+			ArrayList<Integer> suit = cont.get(card.getSuit());
+			Integer repetitions = suit.get(card.getNumber()-1);
 			repetitions ++;
 			assertTrue(repetitions <= MAX_REPETITIONS_NUMBER);
+			suit.add(card.getNumber()-1, repetitions);
+			cont.put(card.getSuit(), suit);
 		}
 	}
 	
