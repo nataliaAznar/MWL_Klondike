@@ -35,4 +35,9 @@ public class Card {
 		return this.getNumber() + " of " + this.getSuit();
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		Card card = (Card) obj;
+		return this.getNumber() == card.getNumber()&&this.getSuit().equals(card.getSuit());
+	}
 }

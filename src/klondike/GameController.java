@@ -107,7 +107,14 @@ public class GameController {
 		Random rand = new Random();
 		Suit[] suit = {Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES};
 		Card card = new Card(rand.nextInt((12 - 1) + 1) + 1, suit[rand.nextInt((3 - 0) + 1)]);
+		if(foundationsContainsCard(card) || tableausContainsCard(card) || waste.contains(card)){ 
+			return getDeckCard();
+		}
 		return card;
+	}
+
+	public Stack<Card> getWaste() {
+		return this.waste;
 	}
 
 }
