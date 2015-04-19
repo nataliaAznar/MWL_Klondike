@@ -12,12 +12,12 @@ public class MoveDeckToWasteController {
 		if( sizeDeck >= 3){
 			gameController.setSizeDeck(sizeDeck - 3);
 			for( int i = 0; i < 3; i++)
-				gameController.wasteAddCard(new Card(1, Suit.CLUBS));
+				gameController.wasteAddCard(gameController.getDeckCard());
 		}
 		else if( sizeDeck > 0){
 			gameController.setSizeDeck(0);
 			for( int i = 0; i < sizeDeck ; i++)
-				gameController.wasteAddCard(new Card(1, Suit.CLUBS));
+				gameController.wasteAddCard(gameController.getDeckCard());
 		}
 		
 	}

@@ -62,9 +62,11 @@ private GameController gameController;
 			cont.put(suit, cards);
 		}
 		for(int x = 0; x < 200; x++){
+			gameController = new GameController();
+			moveDeckToWasteController = new MoveDeckToWasteController(gameController);
 			moveDeckToWasteController.move();
 			Card card = gameController.getDeckCard();
-			Integer repetitions = cont.get(card.getSuit()).get(card.getNumber());
+			Integer repetitions = cont.get(card.getSuit()).get(card.getNumber()-1);
 			repetitions ++;
 			assertTrue(repetitions <= MAX_REPETITIONS_NUMBER);
 		}

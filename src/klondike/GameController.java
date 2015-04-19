@@ -1,6 +1,7 @@
 package klondike;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Stack;
 
 public class GameController {
@@ -84,6 +85,29 @@ public class GameController {
 	public void tableauAddCard(int tableau, Card card) {
 		tableaus.get(tableau).add(card);
 		
+	}
+	
+	public boolean foundationsContainsCard(Card c){
+		boolean contains = false;
+		for(Stack<Card> foundation: foundations){
+			contains = contains||foundation.contains(c);
+		}
+		return contains;
+	}
+	
+	public boolean tableausContainsCard(Card c){
+		boolean contains = false;
+		for(Stack<Card> tableau: tableaus){
+			contains = contains||tableau.contains(c);
+		}
+		return contains;
+	}
+
+	public Card getDeckCard() {
+		Random rand = new Random();
+		Suit[] suit = {Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES};
+		Card card = new Card(rand.nextInt((12 - 1) + 1) + 1, suit[rand.nextInt((3 - 0) + 1)]);
+		return card;
 	}
 
 }
