@@ -11,44 +11,44 @@ import org.junit.Test;
 
 public class MoveWasteToFoundationControllerTest {
 	private MoveWasteToFoundationController moveWasteToFoundationController;
-	private GameController startGameController;
+	private GameController gameController;
 	private static final int FOUNDATION = 1;
 	
 	@Before
 	public void before(){
-		startGameController = new GameController();
-		moveWasteToFoundationController = new MoveWasteToFoundationController(startGameController);
+		gameController = new GameController();
+		moveWasteToFoundationController = new MoveWasteToFoundationController(gameController);
 	}
 	
 	@Test
 	public void moveFoundationSizeZeroTest(){
-		startGameController.wasteAddCard(new Card(1, Suit.CLUBS));
+		gameController.wasteAddCard(new Card(1, Suit.CLUBS));
 		boolean move = moveWasteToFoundationController.move(FOUNDATION);
 		assertTrue(move);
 	}
 	
 	@Test
 	public void moveTest(){
-		startGameController.wasteAddCard(new Card(2, Suit.CLUBS));
-		startGameController.foundationAddCard(FOUNDATION, new Card(1, Suit.CLUBS));
-		Stack<Card> foundation = startGameController.getFoundation(FOUNDATION);
+		gameController.wasteAddCard(new Card(2, Suit.CLUBS));
+		gameController.foundationAddCard(FOUNDATION, new Card(1, Suit.CLUBS));
+		Stack<Card> foundation = gameController.getFoundation(FOUNDATION);
 		int foundationSize = foundation.size();
-		int sizeWaste = startGameController.sizeWaste();
+		int sizeWaste = gameController.sizeWaste();
 		assertTrue(moveWasteToFoundationController.move(FOUNDATION));
-		assertEquals(sizeWaste-1, startGameController.sizeWaste());
-		assertEquals(foundationSize+1, startGameController.getFoundation(FOUNDATION).size());
+		assertEquals(sizeWaste-1, gameController.sizeWaste());
+		assertEquals(foundationSize+1, gameController.getFoundation(FOUNDATION).size());
 	}
 	
 	@Test
 	public void moveBadTest(){
-		startGameController.wasteAddCard(new Card(1, Suit.CLUBS));
-		startGameController.foundationAddCard(FOUNDATION, new Card(1, Suit.CLUBS));
-		Stack<Card> foundation = startGameController.getFoundation(FOUNDATION);
+		gameController.wasteAddCard(new Card(1, Suit.CLUBS));
+		gameController.foundationAddCard(FOUNDATION, new Card(1, Suit.CLUBS));
+		Stack<Card> foundation = gameController.getFoundation(FOUNDATION);
 		int foundationSize = foundation.size();
-		int sizeWaste = startGameController.sizeWaste();
+		int sizeWaste = gameController.sizeWaste();
 		assertFalse(moveWasteToFoundationController.move(FOUNDATION));
-		assertEquals(sizeWaste, startGameController.sizeWaste());
-		assertEquals(foundationSize, startGameController.getFoundation(FOUNDATION).size());
+		assertEquals(sizeWaste, gameController.sizeWaste());
+		assertEquals(foundationSize, gameController.getFoundation(FOUNDATION).size());
 	}
 
 }

@@ -8,40 +8,40 @@ import org.junit.Test;
 public class MoveDeckToWasteControllerTest {
 	
 private MoveDeckToWasteController moveDeckToWasteController;
-private GameController startGameController;
+private GameController gameController;
 	
 	@Before
 	public void before(){
-		startGameController = new GameController();
-		moveDeckToWasteController = new MoveDeckToWasteController(startGameController);
+		gameController = new GameController();
+		moveDeckToWasteController = new MoveDeckToWasteController(gameController);
 	}
 
 	@Test
 	public void moveTest() {
-		int sizeDeck = startGameController.sizeDeck();
-		int sizeWaste = startGameController.sizeWaste();
+		int sizeDeck = gameController.sizeDeck();
+		int sizeWaste = gameController.sizeWaste();
 		moveDeckToWasteController.move();
-		assertEquals(startGameController.sizeDeck(), (sizeDeck - 3));
-		assertEquals(startGameController.sizeWaste(), (sizeWaste + 3));
+		assertEquals(gameController.sizeDeck(), (sizeDeck - 3));
+		assertEquals(gameController.sizeWaste(), (sizeWaste + 3));
 	}
 	
 	@Test
 	public void moveDeckSizeLessThanThreeTest() {
-		startGameController.setSizeDeck(2);
-		int sizeDeck = startGameController.sizeDeck();
-		int sizeWaste = startGameController.sizeWaste();
+		gameController.setSizeDeck(2);
+		int sizeDeck = gameController.sizeDeck();
+		int sizeWaste = gameController.sizeWaste();
 		moveDeckToWasteController.move();
-		assertEquals(startGameController.sizeDeck(), 0);
-		assertEquals(startGameController.sizeWaste(), (sizeWaste + sizeDeck));
+		assertEquals(gameController.sizeDeck(), 0);
+		assertEquals(gameController.sizeWaste(), (sizeWaste + sizeDeck));
 	}
 	
 	@Test
 	public void moveDeckSizeZeroTest() {
-		startGameController.setSizeDeck(0);
-		int sizeWaste = startGameController.sizeWaste();
+		gameController.setSizeDeck(0);
+		int sizeWaste = gameController.sizeWaste();
 		moveDeckToWasteController.move();
-		assertEquals(startGameController.sizeDeck(), 0);
-		assertEquals(startGameController.sizeWaste(), sizeWaste);
+		assertEquals(gameController.sizeDeck(), 0);
+		assertEquals(gameController.sizeWaste(), sizeWaste);
 	}
 	
 }

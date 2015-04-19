@@ -11,33 +11,33 @@ import org.junit.Test;
 public class GameControllerTest {
 	private static final int FOUNDATIONS = 4;
 
-	private GameController startGameController;
+	private GameController gameController;
 	
 	@Before
 	public void before(){
-		startGameController = new GameController();
+		gameController = new GameController();
 	}
 	@Test
 	public void sizeWastetest() {
-		assertEquals(0,startGameController.sizeWaste());
+		assertEquals(0,gameController.sizeWaste());
 	}
 
 	@Test
 	public void sizeFoundationsTest() {
 		for(int i = 0; i < FOUNDATIONS; i++){
-			assertEquals(0, startGameController.getFoundation(i).size());
+			assertEquals(0, gameController.getFoundation(i).size());
 		}
 	}
 	
 	@Test
 	public void sizeDeckTest() {
-		assertEquals(24,startGameController.sizeDeck());
+		assertEquals(24,gameController.sizeDeck());
 	}
 	
 	@Test
 	public void sizeTableausTest() {
-		ArrayList<Integer> sizeTableaus = startGameController.sizeCoveredCardsTableaus();
-		ArrayList<Stack<Card>> uncoveredCardsStackTableaus= startGameController.uncoveredCardsStackTableaus();
+		ArrayList<Integer> sizeTableaus = gameController.sizeCoveredCardsTableaus();
+		ArrayList<Stack<Card>> uncoveredCardsStackTableaus= gameController.uncoveredCardsStackTableaus();
 		assertEquals(7, sizeTableaus.size());
 		assertEquals(7, uncoveredCardsStackTableaus.size());
 		

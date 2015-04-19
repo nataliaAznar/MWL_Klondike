@@ -1,23 +1,23 @@
 package klondike;
 
 public class MoveDeckToWasteController {
-	private GameController startGameController;
+	private GameController gameController;
 
 	public MoveDeckToWasteController(GameController startGameController) {
-		this.startGameController = startGameController;
+		this.gameController = startGameController;
 	}
 
 	public void move() {
-		int sizeDeck = startGameController.sizeDeck();
+		int sizeDeck = gameController.sizeDeck();
 		if( sizeDeck >= 3){
-			startGameController.setSizeDeck(sizeDeck - 3);
+			gameController.setSizeDeck(sizeDeck - 3);
 			for( int i = 0; i < 3; i++)
-				startGameController.wasteAddCard(new Card(1, Suit.CLUBS));
+				gameController.wasteAddCard(new Card(1, Suit.CLUBS));
 		}
 		else if( sizeDeck > 0){
-			startGameController.setSizeDeck(0);
+			gameController.setSizeDeck(0);
 			for( int i = 0; i < sizeDeck ; i++)
-				startGameController.wasteAddCard(new Card(1, Suit.CLUBS));
+				gameController.wasteAddCard(new Card(1, Suit.CLUBS));
 		}
 		
 	}

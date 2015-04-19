@@ -7,38 +7,38 @@ import org.junit.Test;
 
 public class MoveWasteToTableauControllerTest {
 	private MoveWasteToTableauController moveWasteToTableauController;
-	private GameController startGameController;
+	private GameController gameController;
 	private static final int TABLEAU = 1;
 
 	@Before
 	public void before(){
-		startGameController = new GameController();
-		moveWasteToTableauController = new MoveWasteToTableauController(startGameController);
+		gameController = new GameController();
+		moveWasteToTableauController = new MoveWasteToTableauController(gameController);
 	}
 	
 	@Test
 	public void moveTableauSizeZeroTest(){
-		startGameController.wasteAddCard(new Card(12, Suit.CLUBS));
+		gameController.wasteAddCard(new Card(12, Suit.CLUBS));
 		boolean move = moveWasteToTableauController.move(TABLEAU);
 		assertTrue(move);
-		assertEquals(1, startGameController.getTableau(TABLEAU).size());
-		assertEquals(0, startGameController.sizeWaste());
+		assertEquals(1, gameController.getTableau(TABLEAU).size());
+		assertEquals(0, gameController.sizeWaste());
 		
-		startGameController.wasteAddCard(new Card(11, Suit.CLUBS));
+		gameController.wasteAddCard(new Card(11, Suit.CLUBS));
 		move = moveWasteToTableauController.move(TABLEAU+1);
 		assertFalse(move);
-		assertEquals(0, startGameController.getTableau(TABLEAU+1).size());
-		assertEquals(1, startGameController.sizeWaste());
+		assertEquals(0, gameController.getTableau(TABLEAU+1).size());
+		assertEquals(1, gameController.sizeWaste());
 	}
 	
 	@Test
 	public void move(){
-		startGameController.wasteAddCard(new Card(11, Suit.CLUBS));
-		startGameController.tableauAddCard(TABLEAU, new Card(12, Suit.HEARTS));
+		gameController.wasteAddCard(new Card(11, Suit.CLUBS));
+		gameController.tableauAddCard(TABLEAU, new Card(12, Suit.HEARTS));
 		boolean move = moveWasteToTableauController.move(TABLEAU);
 		assertTrue(move);
-		assertEquals(2, startGameController.getTableau(TABLEAU).size());
-		assertEquals(0, startGameController.sizeWaste());
+		assertEquals(2, gameController.getTableau(TABLEAU).size());
+		assertEquals(0, gameController.sizeWaste());
 		
 	}
 

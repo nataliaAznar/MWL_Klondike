@@ -3,15 +3,15 @@ package klondike;
 import java.util.Stack;
 
 public class MoveWasteToTableauController {
-	private GameController startGameController;
+	private GameController gameController;
 
 	public MoveWasteToTableauController(GameController startGameController) {
-		this.startGameController = startGameController;
+		this.gameController = startGameController;
 	}
 
 	public boolean move(int tableauNumber) {
-		Stack<Card> tableau = startGameController.getTableau(tableauNumber);
-		Card moveCard = startGameController.wasteCard();
+		Stack<Card> tableau = gameController.getTableau(tableauNumber);
+		Card moveCard = gameController.wasteCard();
 		if( (tableau.size() == 0) && (moveCard.getNumber() == 12)){
 			return moveCard(tableauNumber, moveCard);
 		}
@@ -25,8 +25,8 @@ public class MoveWasteToTableauController {
 	}
 	
 	public boolean moveCard(int tableau, Card card){
-		startGameController.tableauAddCard(tableau, card);
-		startGameController.wasteRemoveCard();
+		gameController.tableauAddCard(tableau, card);
+		gameController.wasteRemoveCard();
 		return true;
 	}
 
