@@ -1,14 +1,22 @@
 package klondike;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class MoveDeckToWasteControllerTest {
+	private static final Suit[] SUITS = {Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES};
+	private static final int SUIT_CARDS = 12;
+	private static final int MAX_REPETITIONS_NUMBER = 6;
 	
 private MoveDeckToWasteController moveDeckToWasteController;
 private GameController gameController;
+
 	
 	@Before
 	public void before(){
@@ -42,6 +50,24 @@ private GameController gameController;
 		moveDeckToWasteController.move();
 		assertEquals(gameController.sizeDeck(), 0);
 		assertEquals(gameController.sizeWaste(), sizeWaste);
+	}
+	
+	@Test
+	public void cardRandomTest(){
+		HashMap<Suit, ArrayList<Integer>> cont = new HashMap<Suit, ArrayList<Integer>>();
+		for(Suit suit : SUITS){
+			ArrayList<Integer> cards = new ArrayList<Integer>();
+			for(int j = 0; j < SUIT_CARDS; j++)
+				cards.add(0);
+			cont.put(suit, cards);
+		}
+		for(int x = 0; x < 200; x++){
+			moveDeckToWasteController.move();
+			Card card = gameController.getDeckCard();
+			Integer repetitions = cont.get(card.getSuit()).get(card.getNumber());
+			repetitions ++;
+			assertTrue(repetitions <= MAX_REPETITIONS_NUMBER);
+		}
 	}
 	
 }
