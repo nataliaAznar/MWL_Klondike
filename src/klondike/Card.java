@@ -29,5 +29,10 @@ public class Card {
 	public Color getColor() {
 		return this.color;
 	}
+	
+	@Override
+	public String toString() {
+		return this.getNumber() + " of " + this.getSuit();
+	}
 
 }

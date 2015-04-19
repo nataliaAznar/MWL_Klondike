@@ -12,7 +12,7 @@ import org.junit.Test;
 public class MoveDeckToWasteControllerTest {
 	private static final Suit[] SUITS = {Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES};
 	private static final int SUIT_CARDS = 12;
-	private static final int MAX_REPETITIONS_NUMBER = 6;
+	private static final int MAX_REPETITIONS_NUMBER = 10;
 	
 private MoveDeckToWasteController moveDeckToWasteController;
 private GameController gameController;
